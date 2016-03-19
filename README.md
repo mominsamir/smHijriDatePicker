@@ -1,9 +1,9 @@
-# SM Date, Time and Range Picker
+# SM Date Hijri Picker
 
 Picker are design to be used with Angular Material.
 
-  * for [Demo](http://mominsamir.github.io/date-time-picker/)
-  * [plunker](http://plnkr.co/edit/2ePb5nf8vH71iH5byP7q?p=preview) 
+  * for [Demo](http://mominsamir.github.io/smHijriDatePicker/)
+  
 
 ## Requirements
 * [AngularJS](https://angularjs.org/)
@@ -18,13 +18,7 @@ Picker are design to be used with Angular Material.
 * Date Picker
 
 ![Date Picker](https://raw.githubusercontent.com/mominsamir/date-time-picker/master/app/images/date-picker-1.png "Date Picker")
-![Hour Picker](https://raw.githubusercontent.com/mominsamir/date-time-picker/master/app/images/date-picker-2.png "Date Picker")
 
- * Range Picker
-  
-![Range Default Picker](https://raw.githubusercontent.com/mominsamir/date-time-picker/master/app/images/range-picker-1.png "Range Picker")
-![Range Custome Picker](https://raw.githubusercontent.com/mominsamir/date-time-picker/master/app/images/range-picker-2.png "Range Picker")
-![Range Custome Picker](https://raw.githubusercontent.com/mominsamir/date-time-picker/master/app/images/range-picker-3.png "Range Picker")
 
 ### Installation
 ```sh
@@ -33,25 +27,7 @@ Picker are design to be used with Angular Material.
 ```sh
   angular.module('Your App',["ngMaterial","smDateTimeRangePicker"]); 
 ```
-####  DateTime Picker
-```sh
 
-      <div  layout="row"> 
-            <sm-date-time-picker 
-                fname="field" 
-                lable="Date of Birth"
-                form="empForm" 
-                value="vm.employee.dateOfBirth" 
-                flex="50"
-                flex-sm="100"
-                flex-xs="100"                          
-                is-required="{{true}}" 
-                format="MM-DD-YYYY HH:mm"
-                mode="date-time" 
-                week-start-day="Monday">
-            </sm-date-time-picker>
-    </div>
-```
 ####  Date Picker
 ```sh
 
@@ -70,29 +46,12 @@ Picker are design to be used with Angular Material.
             </sm-date-time-picker>
     </div>
 ```
-####  Range Picker
-```sh
-	    <div layout="row">
-	        <sm-range-picker-input
-	                fname="dayOfPay" 
-	                lable="Date of Pay"
-	                form="empForm"
-	                value="vm.employee.dateOfPay" 
-	                flex="50"                         
-	                is-required="{{true}}" 
-	                format="MM-DD-YYYY"
-	                mode="date-time" 
-	                week-start-day="Sunday">
-	        </sm-range-picker-input>
-	    </div>
-```
-
 
 ###License
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Anatoliy
+Copyright (c) 2016
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

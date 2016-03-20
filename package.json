@@ -1,6 +1,28 @@
 {
-  "name": "datetimepicker",
-  "private": true,
+  "name": "smHijriDatePicker",
+  "version": "0.0.1",
+  "description": "Material Design date picker",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mominsamir/smHijriDatePicker"
+  },
+  "keywords": [
+    "material",
+    "design",
+    "angular",
+    "date",
+    "hijri",
+    "picker"
+  ],
+  "author": "mominsamir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mominsamir/smHijriDatePicker"
+  },
+  "homepage": "http://mominsamir.github.io/smHijriDatePicker",
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "grunt": "^0.4.5",

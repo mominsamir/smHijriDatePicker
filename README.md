@@ -17,7 +17,7 @@ Picker are design to be used with Angular Material.
 ### Screenshot 
 * Date Picker
 
-![Date Picker](https://raw.githubusercontent.com/mominsamir/date-time-picker/master/app/images/date-picker-1.png "Date Picker")
+![Date Picker](https://raw.githubusercontent.com/mominsamir/smHijriDatePicker/master/app/images/date-picker-1.png "Date Picker")
 
 
 ### Installation

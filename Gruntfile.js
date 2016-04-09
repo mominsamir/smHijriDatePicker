@@ -16,14 +16,26 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    concat : 'grunt-contrib-concat'
   });
 
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    src : 'src'
   };
+
+  function srcCompass(){
+    return {
+        options: {
+          sassDir: '<%= yeoman.app %>/styles/_date_picker.scss',
+          cssDir: '<%= yeoman.src %>/',          
+          generatedImagesDir: '<%= yeoman.src %>/images/generated'
+        }
+      } 
+  }
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -167,6 +179,16 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      src: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= yeoman.src %>/{,*/}*',
+            '!<%= yeoman.src %>/.git{,*/}*'
+          ]
+        }]
+      },      
       server: '.tmp'
     },
 
@@ -195,7 +217,15 @@ module.exports = function (grunt) {
           src: '{,*/}*.css',
           dest: '.tmp/styles/'
         }]
-      }
+      },
+      src: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '{,*/}*.css',
+          dest: 'src/'
+        }]
+      }      
     },
 
     // Automatically inject Bower components into the app
@@ -226,6 +256,7 @@ module.exports = function (grunt) {
       }
     }, 
 
+
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
@@ -237,6 +268,7 @@ module.exports = function (grunt) {
         fontsDir: '<%= yeoman.app %>/styles/fonts',
         importPath: './bower_components',
         httpImagesPath: '/images',
+
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/styles/fonts',
         relativeAssets: false,
@@ -248,6 +280,7 @@ module.exports = function (grunt) {
           generatedImagesDir: '<%= yeoman.dist %>/images/generated'
         }
       },
+      src: srcCompass(),      
       server: {
         options: {
           sourcemap: true
@@ -329,7 +362,15 @@ module.exports = function (grunt) {
     // concat: {
     //   dist: {}
     // },
-
+    concat: {
+        options: {
+          separator: ';',
+        },
+        src: {
+          src: ['<%= yeoman.app %>/picker/*.js'],
+          dest: '<%= yeoman.src %>/picker.js',
+        },
+    },
     imagemin: {
       dist: {
         files: [{
@@ -366,7 +407,21 @@ module.exports = function (grunt) {
           src: ['*.html', '**/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
-      }
+      },
+      src: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          collapseBooleanAttributes: true,
+          removeCommentsFromCDATA: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.src %>',
+          src: ['<%= yeoman.app %>/picker/*.html'],
+          dest: '<%= yeoman.src %>'
+        }]
+      }      
     },
 
     ngtemplates: {
@@ -379,7 +434,18 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>',
         src: 'views/{,*/}*.html',
         dest: '.tmp/templateCache.js'
-      }
+      },
+      src: {
+        options: {
+          module: 'smHijriDatePicker',
+          htmlmin: '<%= htmlmin.src.options %>',
+          usemin: 'src/picker.js',
+          append:true
+        },
+        cwd: '<%= yeoman.app %>',
+        src: 'picker/*.html',
+        dest: 'src/picker.js'
+      }      
     },
 
     // ng-annotate tries to make the code safe for minification automatically
@@ -425,6 +491,17 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }]
       },
+      src: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.src %>',
+          src: [
+            'styles/*.*'
+          ]
+        }]
+      },      
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -443,6 +520,11 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
+        'imagemin',
+        'svgmin'
+      ],
+      src: [
+        'compass:src',
         'imagemin',
         'svgmin'
       ]
@@ -489,12 +571,15 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'clean:src',    
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
+    'concurrent:src',    
     'postcss',
-    'ngtemplates',
+    'ngtemplates:dist',
     'concat',
+    'ngtemplates:src',    
     'ngAnnotate',
     'copy:dist',
     'cdnify',

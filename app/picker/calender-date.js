@@ -345,7 +345,7 @@ function DateTimePicker($mdUtil,$mdMedia,$document,$timeout,picker){
         var inputPane = $element[0].querySelector('.sm-input-container');
         var calenderPane = $element[0].querySelector('.sm-calender-pane');
         var cElement = angular.element(calenderPane);
-        scope.ngMassagedTempaltePath =picker.path;
+        scope.ngMassagedTempaltePath=picker.massagePath;
         // check if Pre defined format is supplied
         scope.format = angular.isUndefined(scope.format) ? 'MM-DD-YYYY': scope.format;
         
@@ -467,7 +467,7 @@ function smTimePickerNew($mdUtil,$mdMedia,$document,$timeout,picker){
         var inputPane = $element[0].querySelector('.sm-input-container');
         var calenderPane = $element[0].querySelector('.sm-calender-pane');
         var cElement = angular.element(calenderPane);
-        scope.ngMassagedTempaltePath =picker.path;
+        scope.ngMassagedTempaltePath =picker.massagePath;
         // check if Pre defined format is supplied
         scope.format = angular.isUndefined(scope.format) ? 'MM-DD-YYYY': scope.format;
 

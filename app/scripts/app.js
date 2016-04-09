@@ -12,8 +12,10 @@ angular
     moment.locale('ar');
     pickerProvider.setDayHeader('shortName');
     pickerProvider.setOkLabel('حسنا');
-    pickerProvider.setCancelLabel('إلغاء');    
-    
+    pickerProvider.setCancelLabel('إلغاء');
+    pickerProvider.setMonthNames(['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليه','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر']);    
+
+
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider.state('home', {

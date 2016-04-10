@@ -5,12 +5,19 @@ angular
     'ngAnimate',
     'ui.router',
     'ngMaterial',
+    'ngMessages',
     'smHijriDatePicker'
   ])
-  .config(function ($stateProvider, $urlRouterProvider,$mdThemingProvider,pickerProvider) {
+  .run(function ($templateCache, $http) {
+      $http.get('views/massages.html')
+      .then(function(response) {
+        $templateCache.put('error-messages', response.data); 
+      })
+ }).config(function ($stateProvider, $urlRouterProvider,$mdThemingProvider,pickerProvider) {
 
 /*    pickerProvider.setMassagePath("test ddd");*/
     moment.locale('ar');
+    pickerProvider.setMassagePath('error-messages');
     pickerProvider.setDayHeader('shortName');
     pickerProvider.setOkLabel('حسنا');
     pickerProvider.setCancelLabel('إلغاء');

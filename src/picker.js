@@ -321,7 +321,7 @@ function DateTimePicker($mdUtil,$mdMedia,$document,$timeout,picker){
                 +'             type="text" placeholde="{{lable}}"'
                 +'             aria-label="{{fname}}" data-ng-required="isRequired"'
                 +'             ng-focus="show()" server-error class="sm-input-container">'
-                +'    <div ng-messages="form.fname.$error" ng-if="form[fname].$touched">'
+                +'    <div ng-messages="form[fname].$error" ng-if="form[fname].$touched">'
                 +'    		<div ng-messages-include="{{ngMassagedTempaltePath}}"></div>'
                 +'    </div>'
                 +'    	<div id="picker" class="sm-calender-pane md-whiteframe-15dp">'

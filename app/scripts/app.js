@@ -1,10 +1,11 @@
 'use strict';
 
 angular
-  .module('smHijriDatePicker', [
+  .module('smHijriDatePickerDemo', [
     'ngAnimate',
     'ui.router',
-    'ngMaterial'
+    'ngMaterial',
+    'smHijriDatePicker'
   ])
   .config(function ($stateProvider, $urlRouterProvider,$mdThemingProvider,pickerProvider) {
 

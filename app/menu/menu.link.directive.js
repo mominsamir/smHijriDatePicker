@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('smHijriDatePicker')
+  angular.module('smHijriDatePickerDemo')
     .run(['$templateCache', function ($templateCache) {
       $templateCache.put('partials/menu-link.tmpl.html',
         '<md-button  \n' +

@@ -48,6 +48,6 @@
 
 
 
-angular.module('smHijriDatePicker')
+angular.module('smHijriDatePickerDemo')
 .controller('MainCtrl',['$timeout', '$mdSidenav', '$mdUtil', '$log','$state',MainCtrl])
 .controller('LeftCtrl', ['$timeout', '$mdSidenav', '$mdUtil', '$log',LeftCtrl]);

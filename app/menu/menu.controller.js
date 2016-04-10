@@ -56,7 +56,7 @@
 
       }
 
-  angular.module('smHijriDatePicker')
+  angular.module('smHijriDatePickerDemo')
     .controller('MenuCtrl', ['$log','$state','$timeout','$location','$mdSidenav','menu', MenuCtrl]);
 
 })();

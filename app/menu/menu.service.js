@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('smHijriDatePicker')
+  angular.module('smHijriDatePickerDemo')
     .factory('menu', [
       '$location',
       function ($location) {

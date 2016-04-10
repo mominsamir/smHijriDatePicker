@@ -624,7 +624,7 @@ function picker(){
 	}
 }
 
-var app = angular.module('smHijriDatePicker');
+var app = angular.module('smHijriDatePicker',[]);
 
 app.directive('smCalender',['$timeout','picker',Calender]);
 app.directive('smDateTimePicker',['$mdUtil','$mdMedia','$document','$timeout','picker',DateTimePicker]);

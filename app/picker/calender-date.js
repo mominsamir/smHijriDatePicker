@@ -134,8 +134,8 @@ CalenderCtrl.prototype.buildDateCells = function(){
 	var self = this;
 	var currentMonth = self.initialDate.iMonth();
     var calStartDate  = self.initialDate.clone().iDate(0).day(self.startDay);
-    var weekend = false;
-    var isDisabledDate =false;
+    var weekend = false,
+    isDisabledDate =false;
 
     /*
     	Check if min date is greater than first date of month
@@ -149,12 +149,10 @@ CalenderCtrl.prototype.buildDateCells = function(){
 	for (var i = 0; i < 6; i++) {
 		var week = [];
 		for (var j = 0; j < 7; j++) {
-			
+
 			var isCurrentMonth = (calStartDate.iMonth()=== currentMonth);	
-			
 
 			if(isCurrentMonth){isDisabledDate=false}else{isDisabledDate=true};
-			
 
 			if(self.restrictToMinDate && !angular.isUndefined(self.minDate) && !isDisabledDate)
 				isDisabledDate = self.minDate.isAfter(calStartDate);
@@ -163,11 +161,10 @@ CalenderCtrl.prototype.buildDateCells = function(){
 				isDisabledDate = self.maxDate.isBefore(calStartDate);
 			var  day = {
 	            	date : calStartDate.clone(),
-	                dayNum: isCurrentMonth ? calStartDate.format('iD') :"",
+	                dayNum: isCurrentMonth ? calStartDate.format('iD') : "",
 	                month : calStartDate.month(),
 	                today: calStartDate.isSame(moment(),'iDay') && calStartDate.isSame(moment(),'iMonth'),
 	                year : calStartDate.year(),
-	                dayName : calStartDate.format('dddd'),
 	                isWeekEnd : weekend,
 	                isDisabledDate : isDisabledDate,
 	                isCurrentMonth : isCurrentMonth
@@ -253,6 +250,7 @@ CalenderCtrl.prototype.changeView = function(view){
 
 CalenderCtrl.prototype.changeYear = function(yr){
 	var self = this;
+    console.log(yr);
 	self.initialDate.iYear(yr);
 	self.buildDateCells();
 	self.view='DATE';	

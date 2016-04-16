@@ -1,5 +1,5 @@
 <div  class="date-picker">
-			<div ng-if="vm.view==='YEAR_MONTH'" ng-class="{'year-container' : vm.view==='YEAR_MONTH'}"> 
+			<div ng-show="vm.view==='YEAR_MONTH'" ng-class="{'year-container' : vm.view==='YEAR_MONTH'}"> 
 				<md-virtual-repeat-container id="year-container" class="year-md-repeat" md-top-index="vm.yearTopIndex">
 				      <div md-virtual-repeat="yr in vm.yearItems"  md-on-demand  class="repeated-item" flex>
 						<md-button class="md-button" 

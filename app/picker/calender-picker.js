@@ -3,7 +3,7 @@
 
 'use strict';
 
-function DatePickerDir($timeout,picker){
+function DatePickerDir($timeout,picker,$mdMedia){
 	return {
 	  restrict : 'E',
       require: '^ngModel',
@@ -22,7 +22,7 @@ function DatePickerDir($timeout,picker){
 			setViewMode(scope.mode)
 			scope.okLabel = picker.okLabel;
 			scope.cancelLabel = picker.cancelLabel;			
-
+			scope.$mdMedia = $mdMedia; 
 
 			scope.currentDate = isNaN(ngModelCtrl.$viewValue)  ? moment(): ngModelCtrl.$viewValue ;
 
@@ -48,9 +48,9 @@ function DatePickerDir($timeout,picker){
 						date = moment();
 						scope.selectedDate =date;
 					}
+
 					if(!angular.isUndefined(scope.selectedTime)){	
-						var timeSplit = scope.selectedTime.split(':');
-						date.hour(timeSplit[0]).minute(timeSplit[1]);
+						date.hour(scope.selectedTime.hour()).minute(scope.selectedTime.minute());
 					}
 					scope.currentDate =scope.selectedDate;
 					ngModelCtrl.$setViewValue(date.format(scope.format));
@@ -69,8 +69,7 @@ function DatePickerDir($timeout,picker){
 					scope.selectedDate =date;
 				}
 				if(!angular.isUndefined(scope.selectedTime)){	
-					var timeSplit = scope.selectedTime.split(':');
-					date.hour(timeSplit[0]).minute(timeSplit[1]);
+					date.hour(scope.selectedTime.hour()).minute(scope.selectedTime.minute());
 				}
 				scope.currentDate =scope.selectedDate;
 				ngModelCtrl.$setViewValue(date.format(scope.format));
@@ -173,7 +172,7 @@ function TimePickerDir1($timeout,picker){
 
 var app = angular.module('smHijriDatePicker');
 
-app.directive('smDatePicker',['$timeout','picker',DatePickerDir]);
+app.directive('smDatePicker',['$timeout','picker','$mdMedia',DatePickerDir]);
 app.directive('smTimePickern',['$timeout','picker',TimePickerDir1]);
 
 
